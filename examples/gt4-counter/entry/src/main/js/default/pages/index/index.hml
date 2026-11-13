@@ -1,0 +1,11 @@
+<div class="screen">
+  <text class="title">GT4 COUNTER</text>
+  <text class="count">{{ count }}</text>
+  <text class="hint">{{ hint }}</text>
+  <div class="add" onclick="increment">
+    <text class="add-label">+1</text>
+  </div>
+  <div class="reset" onclick="reset">
+    <text class="reset-label">Reset</text>
+  </div>
+</div>
