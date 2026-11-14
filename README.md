@@ -1,4 +1,9 @@
-# GT4 Counter：从源码到 WATCH GT 4 真机安装
+# WATCH GT 4：开发、安装与鼠标转发示例
+
+仓库现包含两个示例：
+
+- [GT4 Counter](examples/gt4-counter/)：离线计数器，下文保留其完整签名与安装流程。
+- [GT4 AirPointer 1.2.6](examples/gt4-airpointer/)：GT4 → BLE → iPhone → Mac 鼠标转发，包含表端、内存适配器、接收器、测试与实测记录。后续网络探测版本不在此快照中。
 
 这是一个已在 **HUAWEI WATCH GT 4 真机运行**的 Lite Wearable 离线计数器，也是一次完整开发、签名、安装过程的记录。点击 `+1` 计数，`Reset` 归零，上限 999；退出后不保留计数，不申请网络或健康权限。
 
@@ -38,6 +43,7 @@
 ```text
 examples/
   gt4-counter/        本仓库跟踪的演示源码；build/ 不入 Git
+  gt4-airpointer/     已验证的 1.2.6 BLE 鼠标转发源码快照
 app/                  后续自行开发的应用，整个目录不入 Git
   我的应用A/          每个应用以应用名为目录
   我的应用B/
@@ -51,7 +57,7 @@ LICENSE               AGPL-3.0 许可正文
 THIRD_PARTY_NOTICES.md 来源及许可说明
 ```
 
-`app/` 专供后续开发，新增任意 `app/应用名/` 都会被 Git 忽略。当前 demo 已移到 `examples/gt4-counter/`，默认构建、校验和安装脚本指向它。开发新应用可先将 demo 复制到 `app/应用名/`，然后调整包名、名称、版本及签名配置；现有签名/安装包装脚本仍限定 demo，不会自动发现或部署新应用。
+`app/` 专供后续开发，新增任意 `app/应用名/` 都会被 Git 忽略。明确发布的源码放在 `examples/`；默认根构建、校验和安装脚本仍指向 Counter，AirPointer 使用其目录内脚本。开发新应用可先复制示例到 `app/应用名/`，再调整包名、名称、版本及签名配置；脚本不会自动发现或部署新应用。
 
 进入克隆后的仓库目录，后续命令均在该目录执行：
 

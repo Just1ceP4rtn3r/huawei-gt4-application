@@ -9,6 +9,7 @@
 - `scripts/watch-channel.py` 与 `scripts/phone-bridge.js` 参考该工程的 Huawei 文件传输、应用安装和帧封装逻辑；上游说明相关协议代码源自 [Gadgetbridge](https://codeberg.org/Freeyourgadget/Gadgetbridge)，遵循其 AGPL 许可。
 - 本地包检查动态调用上游 `tools/check-watch-bin.py`；原文件由 `setup.sh` 下载至被 Git 忽略的 `tools/`，不在这里重复分发。
 - 计数器页面、工作区脚本、签名一致性检查和文档为本次新增；协议适配还核对了本机已有 CrescentRelay 的会话布局，未包含其手机工程。
+- `examples/gt4-airpointer/` 保存 1.2.6 BLE 鼠标转发实现；手机内存适配器与安装脚本由上述协议代码改编，运动处理、页面和 Mac 接收器为新增实现。动作指向交互参考 AirPointer，未复制其私有链路或素材；详细来源见该示例的 `docs/SOURCES.md`。未使用的 Huawei SDK vendor 副本不随快照发布。
 
 ## 下载的工具和运行依赖
 

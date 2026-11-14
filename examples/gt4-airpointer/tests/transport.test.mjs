@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import { sourceModule } from './load-source.mjs';
+const {default: Transport}=await sourceModule(new URL('../watch/entry/src/main/js/default/common/transport.js',import.meta.url));
+const pending=[],sent=[];
+const t=new Transport({sendMsg(o){sent.push(JSON.parse(o.message));pending.push(o);}},{peerPackage:'local.test'});
+t.push({armed:true,dx:1,dy:0,scroll:0,buttons:[]});
+for(let i=2;i<=100;i++)t.push({armed:true,dx:i,dy:0,scroll:0,buttons:[]});
+assert.equal(sent.length,1);assert.equal(t.pending.seq,100);
+pending.shift().success();assert.equal(sent.length,2);assert.equal(sent[1].dx,100);
+const last=pending.shift();t.stop();last.success();assert.equal(sent.length,2);assert.equal(t.pending,null);
+console.log('Transport tests passed: one in-flight send, bounded pending motion and late callback cancellation');
+const failed=new Transport({sendMsg:o=>o.fail(undefined,206)},{peerPackage:'local.test'});
+failed.push({armed:false});failed.push({armed:false});assert.equal(failed.closed,true);assert.equal(failed.pending,null);
+console.log('Native failure closes sender instead of flooding BLE during diagnostics');

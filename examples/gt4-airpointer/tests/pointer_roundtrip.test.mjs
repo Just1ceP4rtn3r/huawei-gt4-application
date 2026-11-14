@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {sourceModule} from './load-source.mjs';
+import {decodePointerRoute} from '../relay/pointer-beacon.js';
+import {PHONE_PACKAGE} from '../relay/protocol.js';
+const {default:Encoder}=await sourceModule(new URL('../watch/entry/src/main/js/default/common/pointer-beacon.js',import.meta.url));
+const encoder=new Encoder(PHONE_PACKAGE);
+encoder.push({armed:true,dx:-2.25,dy:3,scroll:0,buttons:[{kind:'left',id:17,age:20}]},1000,false);
+encoder.push({armed:true,dx:1,dy:2,scroll:0,buttons:[{kind:'left',id:17,age:25}]},1020,false);
+const first=decodePointerRoute(encoder.take(1020));
+assert.equal(first.dx,-1.25);assert.equal(first.dy,5);assert.equal(first.buttons[0].id,17);assert.equal(first.origin,'real-sensor');assert.match(first.session,/^\d+-\d+$/);
+encoder.push({armed:false,dx:50,dy:50,scroll:0,buttons:[]},1100,false);
+const paused=decodePointerRoute(encoder.take(1100));assert.equal(paused.armed,false);assert.equal(paused.dx,0);assert.equal(paused.seq,2);
+encoder.push({armed:true,dx:4,dy:0,scroll:0,buttons:[]},1200,true);
+assert.equal(decodePointerRoute(encoder.take(1700)).origin,'synthetic-watch-test');
+encoder.push({armed:true,dx:20,dy:0,scroll:0,buttons:[]},2000,false);assert.equal(encoder.take(2251),null);
+console.log('Real watch encoder -> phone decoder passed: units, signed values, aggregation, pause, synthetic attribution and stale-motion discard');

@@ -125,6 +125,10 @@ if [ "${HUASIDELOAD_LEGACY_IMAGES:-}" = 1 ]; then
   find "$BUILD/loader_out_lite" -name '*.png.bin' -delete
 fi
 
+if [ -n "${HUASIDELOAD_JS_POSTPROCESSOR:-}" ]; then
+  "$NODE" "$HUASIDELOAD_JS_POSTPROCESSOR" "$BUILD/loader_out_lite/js"
+fi
+
 echo "3/5 restool"
 "$SDK/toolchains/restool" -i "$MAIN" -p "$BUNDLE" \
   -o "$BUILD/res" -r "$BUILD/res/ResourceTable.txt" -j "$MAIN/config.json" -f | tail -1

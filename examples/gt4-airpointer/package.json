@@ -1,0 +1,1 @@
+{"name":"gt4-air-pointer","private":true,"type":"module","scripts":{"test":"node tests/motion.test.mjs && node tests/transport.test.mjs && node tests/protocol.test.mjs && node tests/lifecycle.test.mjs"}}
