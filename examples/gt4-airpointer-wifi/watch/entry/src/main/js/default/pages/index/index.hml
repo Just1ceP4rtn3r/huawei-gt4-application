@@ -1,0 +1,7 @@
+<div class="screen">
+  <text class="eyebrow">WRIST TO CURSOR</text>
+  <text class="title">AirPointer</text>
+  <text class="description">Move your wrist. Control your Mac.</text>
+  <div class="button" onclick="open"><text class="button-label">Open controller</text></div>
+  <text class="note">Starts paused · calibrate to begin</text>
+</div>

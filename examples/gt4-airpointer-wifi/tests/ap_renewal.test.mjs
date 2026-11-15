@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {ApRenewal} from '../relay/ap-renewal.js';
+let jobs=[],writes=0,events=[],valid=true;
+const renew=new ApRenewal({write:async current=>{assert(current());writes++;},valid:()=>valid,event:e=>events.push(e),schedule:(f,ms)=>{assert.equal(ms,20000);jobs.push(f);return f;},cancel:f=>{jobs=jobs.filter(x=>x!==f);}});
+renew.start();await jobs.shift()();await renew.pending;assert.equal(writes,1);assert.equal(jobs.length,1);
+await renew.stop();assert.equal(jobs.length,0);
+renew.start();valid=false;await jobs.shift()();await renew.pending;assert.equal(writes,1);assert.equal(jobs.length,0);assert.equal(events.at(-1).state,'stopped');
+let gate;
+const pending=new ApRenewal({write:current=>new Promise(resolve=>{gate=()=>{assert.equal(current(),false);resolve();};}),valid:()=>true,event:()=>assert.fail('late result'),schedule:(f,ms)=>{assert.equal(ms,20000);jobs.push(f);return f;},cancel:f=>{jobs=jobs.filter(x=>x!==f);}});
+pending.start();jobs.shift()();const settled=pending.stop();gate();await settled;assert.equal(jobs.length,0);
+console.log('AP renewal lifecycle checks passed');

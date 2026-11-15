@@ -1,11 +1,12 @@
 # WATCH GT 4：开发、安装与鼠标转发示例
 
-当前网络开发版本的测试方案与实测边界见 [GT4 端到端测试流程](docs/GT4-E2E-TESTING.md)、[Mac 直连记录](docs/MAC-DIRECT-TEST.md)和[热点持续性经验](docs/WIFI-PERSISTENCE-EXPERIENCE.md)。已完成一次真实 Mac 直连鼠标验证；长时间稳定性及全套无人值守尚未完成。相关开发源码位于忽略的 `app/`，不包含在下述 1.2.6 公开快照内。
+当前网络开发版本的测试方案与实测边界见 [GT4 端到端测试流程](docs/GT4-E2E-TESTING.md)、[Mac 直连记录](docs/MAC-DIRECT-TEST.md)和[热点持续性经验](docs/WIFI-PERSISTENCE-EXPERIENCE.md)。已完成一次真实 Mac 直连鼠标验证；长时间稳定性及全套无人值守尚未完成。已验证的 Wi-Fi 源码现已公开在 [gt4-airpointer-wifi](examples/gt4-airpointer-wifi/)；本地后续开发仍位于忽略的 `app/`。
 
-仓库现包含两个示例：
+仓库现包含三个示例：
 
 - [GT4 Counter](examples/gt4-counter/)：离线计数器，下文保留其完整签名与安装流程。
 - [GT4 AirPointer 1.2.6](examples/gt4-airpointer/)：GT4 → BLE → iPhone → Mac 鼠标转发，包含表端、内存适配器、接收器、测试与实测记录。后续网络探测版本不在此快照中。
+- [GT4 Wi-Fi AirPointer 1.5.3](examples/gt4-airpointer-wifi/)：GT4 → Wi-Fi/TCP → Mac 的真实鼠标控制快照；手机App开热点并续期，USB仅启动时获取当前认证会话材料。包含表端源码、Mac工具、离线测试及本地配置模板。
 
 这是一个已在 **HUAWEI WATCH GT 4 真机运行**的 Lite Wearable 离线计数器，也是一次完整开发、签名、安装过程的记录。点击 `+1` 计数，`Reset` 归零，上限 999；退出后不保留计数，不申请网络或健康权限。
 
@@ -46,6 +47,7 @@
 examples/
   gt4-counter/        本仓库跟踪的演示源码；build/ 不入 Git
   gt4-airpointer/     已验证的 1.2.6 BLE 鼠标转发源码快照
+  gt4-airpointer-wifi/ 已验证的 1.5.3 Wi-Fi 鼠标控制源码快照
 app/                  后续自行开发的应用，整个目录不入 Git
   我的应用A/          每个应用以应用名为目录
   我的应用B/

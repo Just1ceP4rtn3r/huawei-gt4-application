@@ -1,0 +1,39 @@
+{
+  "watchVersion": "1.5.3",
+  "watchSourceSha256": {
+    "watch/package.json": "7d38de102f9d211b8a221ab5943610473c4b23aeee36e9a9cf0e22848e04b9d4",
+    "watch/entry/src/main/config.json": "700d110075454301b150f509796aa745a766cd4e58e1147121ee986c0990f838",
+    "watch/entry/src/main/resources/base/element/string.json": "d038330285c4e35bb4dab3765b25fd2a99944f9f230c58052542e94723bbe8ab",
+    "watch/entry/src/main/resources/base/media/icon.png": "90439eda849ba9045f3c34afd7157156b8974aeed8225459acebac3de7f24947",
+    "watch/entry/src/main/resources/base/media/icon_small.png": "ea24141569c0c4e4155ae196289e7c03507e2faa10230eaceecf73c4a3ca3267",
+    "watch/entry/src/main/js/default/app.js": "41f53099db581f1187d830171f597e68b9c109cfa82577a48ea07f1a4666cc9a",
+    "watch/entry/src/main/js/default/common/network-probe.js": "24364950f63c457d2db27aca6fd1d8ec256bd5297104abfee6e296352b2c92fa",
+    "watch/entry/src/main/js/default/common/managed-link.js": "2631a5553701918503967e4a5e87e328cc182d36bbd2c55fc78c0ec0e5162fee",
+    "watch/entry/src/main/js/default/common/diagnostics.js": "c219eca4fb656bdfa30120ef139f0818918e0a6b71f83bf3dd18c16a4d48d748",
+    "watch/entry/src/main/js/default/common/native-wearengine.js": "d044d121695e9f5e9664c1ea2673f3d1b0d287badcb69849f407fa798b3d7630",
+    "watch/entry/src/main/js/default/common/pointer-beacon.js": "922fc300292fe4684cfcb17954c8261bad2fe3c1b9760311bcc92857f93610df",
+    "watch/entry/src/main/js/default/common/bridge.js": "e950b4ce624e6ca23e3453f2c1cdadfc9732f5ff1e22458759e4cbcf2c7fbc9a",
+    "watch/entry/src/main/js/default/common/transport.js": "6e3393e38856a7b17013e15a8992cb7aa771dd051e64afeac76d24be8aadbb1d",
+    "watch/entry/src/main/js/default/common/config.js": "f14e4128f7044b78d64866505551f74fb70c17e9facb6908a9e54a4b31bf8826",
+    "watch/entry/src/main/js/default/common/network-bridge.js": "a95cc23669e783e12d04c217dc9d22f4c9bee3d5114249988c4ce3fea1be9247",
+    "watch/entry/src/main/js/default/common/motion.js": "c14b937069a3ecb98e5e44b66931defba3683d707050e4e347d3410b97dfd379",
+    "watch/entry/src/main/js/default/common/managed-controller.js": "c36782d4e2032bed0398ffe5b9059cc63a9c90b5a8a1a689cb869ad9a87a8713",
+    "watch/entry/src/main/js/default/pages/network/network.hml": "a2a6c9b5aa830c409917645afadf7973044dc6fe36cf663d2236af3e2ef0a785",
+    "watch/entry/src/main/js/default/pages/network/network.css": "1b5085c78048eb17e6a686ede974229a11eab9f49e316b327cf6274f51b9522e",
+    "watch/entry/src/main/js/default/pages/network/network.js": "3b4269a325fdbdc5d5fdbc86cbfedc94ca39dc48dc219e3227a4a0e8370dcc40",
+    "watch/entry/src/main/js/default/pages/index/index.js": "fac4d9eaac1bdd532606e77f6213119bfb1dc4d004bdbddf52da98c07e304160",
+    "watch/entry/src/main/js/default/pages/index/index.css": "40709518c389586c8adaf5d690b875afca44f3064ddc2bf05fedf1c3e1bb4993",
+    "watch/entry/src/main/js/default/pages/index/index.hml": "4600aac03633b09b924be9cd950ee46f4034d1e09f1aca15b47041dc9571f259",
+    "watch/entry/src/main/js/default/pages/control/control.css": "24cd0d0201f3d60322c89cc17d62d96981a56de3ea5e3187f24020c19c3ce31e",
+    "watch/entry/src/main/js/default/pages/control/control.js": "1ad6a345219bbdbe8bf77f527cd8dad09079dc8cd2508c04cb761fb2716a9e3b",
+    "watch/entry/src/main/js/default/pages/control/control.hml": "66c9f3d34db48139000292910858ea027e61dc52c3558c36487f9edf7a10cf62",
+    "watch/entry/src/main/js/default/common/vendor/wearengine.js": "3437e96f41608bedc9301a59561f9f4907aa991ac3ae878f11590196a015dad7"
+  },
+  "source": "Local development GT4AirPointer at time of successful Mac-direct test",
+  "packagingChanges": [
+    "Project-relative example paths",
+    "Device identifiers and SSH alias from local configuration",
+    "No automatic Wi-Fi switching tool or system-alert private action tooling included",
+    "Existing root SSH wrapper supports USB port and host-key alias"
+  ]
+}

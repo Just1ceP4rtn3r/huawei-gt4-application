@@ -1,5 +1,7 @@
 # GT4 开发与端到端测试流程
 
+已验证的1.5.3源码已发布到[Wi-Fi AirPointer示例](../examples/gt4-airpointer-wifi/)。新用户请使用该目录README中的配置与运行命令；本页若引用`app/GT4AirPointer/`，指原始开发和验收工作区。
+
 记录日期：2026-11-15。当前验证组合为表端 AirPointer 1.5.3、手机弦月 1.2.29。本文整理电脑自动控制、真机证据和失败恢复的共同规则；[Mac 直连实测](MAC-DIRECT-TEST.md)与[热点持续性经验](WIFI-PERSISTENCE-EXPERIENCE.md)记录具体结果。
 
 ## 自动化边界

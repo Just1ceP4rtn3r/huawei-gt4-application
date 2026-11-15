@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "GT4 AirPointer"
+    },
+    {
+      "name": "motion_permission_reason",
+      "value": "Use wrist movement to control the Mac cursor"
+    },
+    {
+      "name": "network_permission_reason",
+      "value": "Test a direct network connection for mouse control"
+    }
+  ]
+}
