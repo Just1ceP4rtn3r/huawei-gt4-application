@@ -51,11 +51,17 @@
 | Mac 返回日常 Wi-Fi | 本次会话恢复失败，保留失败尾部与此前有效帧；长稳标失败/未通过 |
 | 手机后台掉网 | 普通后台约 60 秒问题未解决，暂用前台；20 秒续期不等于后台可靠 |
 | stop 后表端无法重开 | 普通停止用 pause 保留应用；exit ACK 不证明退出完成或可再次冷启动 |
-| iPhone 全局触屏无效 | 已确认一次 SpringBoard 忽略交互状态，原因调用者尚未知；不能归因于热点或 Frida |
+| iPhone 全局触屏无效 | 已确证旧自动化调用私有 invokeInterfaceAction 留下忽略交互计数；禁止用该方法处理系统弹窗 |
 
-触屏异常的已确认记录：硬件触控事件存在，采样未见主线程死锁；UIApplication isIgnoringInteractionEvents=true，default 计数 3。平衡清除这 3 个条目后变为 false/0，未重启，用户确认立即恢复。此为当次诊断和恢复证据，不是通用修复命令；受控调用栈跟踪尚在进行，禁止据此反推触发者。
+触屏异常的已确认记录：硬件触控事件存在，采样未见主线程死锁；UIApplication isIgnoringInteractionEvents=true，default 计数 3。平衡清除这 3 个条目后变为 false/0，未重启，用户确认立即恢复。此为当次诊断和恢复证据，不是通用修复命令。
+
+随后受控跟踪定位直接触发者：初始 count=0；NEHotspot 系统加入弹窗的 presentation begin/end 正常配对，弹窗稳定时仍为 0。旧自动化通过 Frida 调用 UIKitCore 的 UIInterfaceActionRepresentationView.invokeInterfaceAction 时，该私有方法另行调用 beginIgnoringInteractionEvents；dismiss 转场只平衡自身 begin/end，留下 defaultCount=1 持续 12 秒。设置开关与返回应用的对照保持 0。因而此次复现应归因于旧自动化私有点击调用，不能归因于热点协议或正式 IPA 显式禁交互，也不能概括为所有 Frida 使用都会触发。
+
+禁止继续使用 invokeInterfaceAction 处理系统弹窗。后续应使用真实 HID 点击或人工系统授权，并保留这些无人值守例外。复现后已将残留 defaultCount 从 1 恢复到 0，无需重启；开发机两处旧工具入口已禁用。正式手机 IPA 不包含该点击代码，无需为此根因重装手机应用。禁用后调用 join-alert 返回 joined=false、disabled=true；随后 12 秒每 2 秒观察，SpringBoard 始终 ignoring=false、defaultCount=0，未出现交互禁用调用。该对照只证明停用入口不再触发，新的真实 HID 方案尚未实现。
 
 清理只终止本次创建且已核对身份的服务和转发，不使用广泛 kill。适配器需释放并 detach，检查手机服务是否残留或被守护进程拉起。热点 action5 写出与实际关闭分别记录；Mac 回日常网络也要实际核对。不得以重置手表、解除配对、重装运动健康或修改签名校验绕过失败。
+
+详细调用栈、安装包复核与停用对照见 [触屏诊断](TOUCH-DIAGNOSIS.md)。
 
 ## 结果记录标准
 
