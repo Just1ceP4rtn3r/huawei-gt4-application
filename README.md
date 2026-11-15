@@ -1,5 +1,7 @@
 # WATCH GT 4：开发、安装与鼠标转发示例
 
+当前网络开发版本的测试方案与实测边界见 [GT4 端到端测试流程](docs/GT4-E2E-TESTING.md)、[Mac 直连记录](docs/MAC-DIRECT-TEST.md)和[热点持续性经验](docs/WIFI-PERSISTENCE-EXPERIENCE.md)。已完成一次真实 Mac 直连鼠标验证；长时间稳定性及全套无人值守尚未完成。相关开发源码位于忽略的 `app/`，不包含在下述 1.2.6 公开快照内。
+
 仓库现包含两个示例：
 
 - [GT4 Counter](examples/gt4-counter/)：离线计数器，下文保留其完整签名与安装流程。
