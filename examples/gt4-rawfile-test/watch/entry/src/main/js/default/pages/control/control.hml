@@ -1,0 +1,19 @@
+<div class="screen">
+  <text class="title">AIRPOINTER</text>
+  <text class="state">{{calibration}}</text>
+  <text class="status">{{macText}}</text>
+  <div class="row">
+    <div class="primary" onclick="calibrate"><text class="dark">Calibrate</text></div>
+    <div class="button" onclick="toggle"><text class="label">{{action}}</text></div>
+  </div>
+  <div class="row">
+    <div class="small" onclick="left"><text class="small-label">Left</text></div>
+    <div class="small" onclick="right"><text class="small-label">Right</text></div>
+    <div class="small" onclick="drag"><text class="small-label">Drag</text></div>
+  </div>
+  <div class="row">
+    <div class="button" onclick="switchMode"><text class="label">{{mode}}</text></div>
+    <div class="button" onclick="speed"><text class="label">{{gainText}}</text></div>
+  </div>
+  <text class="status">{{sensorText}}</text>
+</div>

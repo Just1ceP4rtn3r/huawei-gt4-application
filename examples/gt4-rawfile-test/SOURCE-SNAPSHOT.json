@@ -1,0 +1,49 @@
+{
+  "watchVersion": "1.6.38",
+  "source": "app/GT4AirPointerRawfileTest",
+  "watchSourceSha256": {
+    "watch/entry/src/main/config.json": "e83fef9799ad468a9d77ea7826b0f1f77a947494d82c854cfd97ce1536cb67a7",
+    "watch/entry/src/main/js/default/app.js": "41f53099db581f1187d830171f597e68b9c109cfa82577a48ea07f1a4666cc9a",
+    "watch/entry/src/main/js/default/common/audio-lib.js": "ab63cc8296bfef510c4ae3f9f68677f77e4893ebdf4614a734ce3dd9dfb7ba88",
+    "watch/entry/src/main/js/default/common/bridge.js": "e950b4ce624e6ca23e3453f2c1cdadfc9732f5ff1e22458759e4cbcf2c7fbc9a",
+    "watch/entry/src/main/js/default/common/config.js": "f14e4128f7044b78d64866505551f74fb70c17e9facb6908a9e54a4b31bf8826",
+    "watch/entry/src/main/js/default/common/diagnostics.js": "c219eca4fb656bdfa30120ef139f0818918e0a6b71f83bf3dd18c16a4d48d748",
+    "watch/entry/src/main/js/default/common/managed-controller.js": "c36782d4e2032bed0398ffe5b9059cc63a9c90b5a8a1a689cb869ad9a87a8713",
+    "watch/entry/src/main/js/default/common/managed-link.js": "2631a5553701918503967e4a5e87e328cc182d36bbd2c55fc78c0ec0e5162fee",
+    "watch/entry/src/main/js/default/common/motion.js": "c14b937069a3ecb98e5e44b66931defba3683d707050e4e347d3410b97dfd379",
+    "watch/entry/src/main/js/default/common/native-wearengine.js": "d044d121695e9f5e9664c1ea2673f3d1b0d287badcb69849f407fa798b3d7630",
+    "watch/entry/src/main/js/default/common/network-bridge.js": "a95cc23669e783e12d04c217dc9d22f4c9bee3d5114249988c4ce3fea1be9247",
+    "watch/entry/src/main/js/default/common/network-probe.js": "fc31b537fb1f131de0f313f2eee425dd64a94e9db65e9ec7c36d0b0692dca065",
+    "watch/entry/src/main/js/default/common/pointer-beacon.js": "922fc300292fe4684cfcb17954c8261bad2fe3c1b9760311bcc92857f93610df",
+    "watch/entry/src/main/js/default/common/rawfile-read-probe.js": "29206869183b232529b85d7d9769433f3729ae40f18384874732bb18a18cd2e8",
+    "watch/entry/src/main/js/default/common/rawfile-target-test.js": "040c2a93451d01de3e88e5ba97fb4ecfa480dd8e066b1cbfca91b9f4a09719b2",
+    "watch/entry/src/main/js/default/common/rawfile-test.js": "41df73752584cd36e09a1b990b5ad3f27f8aaa4f6e92f427839e7c32feb1b2d9",
+    "watch/entry/src/main/js/default/common/transport.js": "6e3393e38856a7b17013e15a8992cb7aa771dd051e64afeac76d24be8aadbb1d",
+    "watch/entry/src/main/js/default/common/vendor/wearengine.js": "3437e96f41608bedc9301a59561f9f4907aa991ac3ae878f11590196a015dad7",
+    "watch/entry/src/main/js/default/pages/control/control.css": "24cd0d0201f3d60322c89cc17d62d96981a56de3ea5e3187f24020c19c3ce31e",
+    "watch/entry/src/main/js/default/pages/control/control.hml": "66c9f3d34db48139000292910858ea027e61dc52c3558c36487f9edf7a10cf62",
+    "watch/entry/src/main/js/default/pages/control/control.js": "1ad6a345219bbdbe8bf77f527cd8dad09079dc8cd2508c04cb761fb2716a9e3b",
+    "watch/entry/src/main/js/default/pages/index/index.css": "1b0addd29a0da10d18fc7978438f7c211dea072ba3aa86fdffab772fb287bcd7",
+    "watch/entry/src/main/js/default/pages/index/index.hml": "85d66cb72fd91f238b22139f063296384ff4a4e912699e05312177e01d084798",
+    "watch/entry/src/main/js/default/pages/index/index.js": "d64ceb774cc56eeab835417a36e7295086824d2c48bc8f94a830dfcdbaa4fd29",
+    "watch/entry/src/main/js/default/pages/network/network.css": "1b5085c78048eb17e6a686ede974229a11eab9f49e316b327cf6274f51b9522e",
+    "watch/entry/src/main/js/default/pages/network/network.hml": "a2a6c9b5aa830c409917645afadf7973044dc6fe36cf663d2236af3e2ef0a785",
+    "watch/entry/src/main/js/default/pages/network/network.js": "3b4269a325fdbdc5d5fdbc86cbfedc94ca39dc48dc219e3227a4a0e8370dcc40",
+    "watch/entry/src/main/resources/base/element/string.json": "d038330285c4e35bb4dab3765b25fd2a99944f9f230c58052542e94723bbe8ab",
+    "watch/entry/src/main/resources/base/media/icon.png": "90439eda849ba9045f3c34afd7157156b8974aeed8225459acebac3de7f24947",
+    "watch/entry/src/main/resources/base/media/icon_small.png": "ea24141569c0c4e4155ae196289e7c03507e2faa10230eaceecf73c4a3ca3267",
+    "watch/package.json": "7d38de102f9d211b8a221ab5943610473c4b23aeee36e9a9cf0e22848e04b9d4"
+  },
+  "deviceValidation": {
+    "installation": "102 and version readback",
+    "binaryWrite": "256 bytes 00..ff written to internal://app/rawfile/lib/audio_decode_m55.bin",
+    "binaryReadback": "all 256 bytes compared equal over BLE",
+    "postWriteFileLength": 1180
+  },
+  "packagingChanges": [
+    "Example-relative build and documentation",
+    "Offline tests for binary verification",
+    "No signing, device logs or generated binaries included",
+    "Inherited network probe host replaced with documentation-only 192.0.2.1"
+  ]
+}

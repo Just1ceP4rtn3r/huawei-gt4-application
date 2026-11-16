@@ -1,0 +1,7 @@
+<div class="screen">
+  <text class="eyebrow">RAWFILE TEST</text>
+  <text class="title">{{status}}</text>
+  <text class="description">{{detail}}</text>
+  <div class="button" onclick="open"><text class="button-label">Open controller</text></div>
+  <text class="note">App sandbox · rawfile/lib</text>
+</div>

@@ -8,6 +8,8 @@
 - [GT4 AirPointer 1.2.6](examples/gt4-airpointer/)：GT4 → BLE → iPhone → Mac 鼠标转发，包含表端、内存适配器、接收器、测试与实测记录。后续网络探测版本不在此快照中。
 - [GT4 Wi-Fi AirPointer 1.5.3](examples/gt4-airpointer-wifi/)：GT4 → Wi-Fi/TCP → Mac 的真实鼠标控制快照；手机App开热点并续期，USB仅启动时获取当前认证会话材料。包含表端源码、Mac工具、离线测试及本地配置模板。
 
+- [GT4 文件读写测试 1.6.38](examples/gt4-rawfile-test/)：向自身应用的 `rawfile/lib/audio_decode_m55.bin` 写入256字节二进制并回读，BLE逐项诊断；已验证覆盖写入，不自动截断旧文件。
+
 这是一个已在 **HUAWEI WATCH GT 4 真机运行**的 Lite Wearable 离线计数器，也是一次完整开发、签名、安装过程的记录。点击 `+1` 计数，`Reset` 归零，上限 999；退出后不保留计数，不申请网络或健康权限。
 
 2026-11-13 的实际结果：签名包通过手表校验，安装状态返回 **102**，应用列表读回 `GT4 Counter / 1.0.0`，用户在手表打开后确认页面、加一和归零均正常。调试结束后，手机 Frida、远控及其守护进程、本次电脑 SSH 转发均已停止。

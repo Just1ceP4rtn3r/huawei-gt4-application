@@ -12,6 +12,7 @@
 - `examples/gt4-counter/`：计数器演示应用；构建生成目录不进入 Git。
 - `examples/gt4-airpointer/`：用户授权发布的 1.2.6 BLE 鼠标转发源码快照；不混入 app/ 中尚未验证的网络探测版本，构建生成目录不进入 Git。
 - `examples/gt4-airpointer-wifi/`：用户授权发布的1.5.3 Wi-Fi鼠标源码快照；包含配置模板，不包含设备身份、签名材料、构建产物或私有日志。
+- `examples/gt4-rawfile-test/`：用户授权发布的1.6.38文件读写测试源码；二进制覆盖与回读，含BLE诊断，不含私有产物。
 - `scripts/`：环境、构建、校验、连接与安装脚本。
 - `tools/`：工作区独立工具、SDK、运行时与依赖。
 - `artifacts/`：构建产物、校验信息、安装结果与必要截图。

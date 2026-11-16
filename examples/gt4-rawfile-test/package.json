@@ -1,0 +1,8 @@
+{
+  "name": "gt4-rawfile-test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/rawfile-target.test.mjs"
+  }
+}

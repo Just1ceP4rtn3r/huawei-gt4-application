@@ -1,0 +1,6 @@
+<div class="screen">
+  <text class="title">NETWORK PROBE</text>
+  <text class="status">{{link}}</text>
+  <text class="status">{{result}}</text>
+  <text class="note">Remote inspect / create only</text>
+</div>
