@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {sourceModule} from './load-source.mjs';
+const {default:Controller}=await sourceModule(new URL('../watch/entry/src/main/js/default/common/managed-controller.js',import.meta.url));
+let time=100,calls=[],events=[];
+const controller=new Controller((op,args,done)=>{calls.push(op);done({op});},(...args)=>events.push(args),()=>time);
+let id=0;const command=(op,args={},session='1234567890abcdef')=>({v:1,t:'command',session,id:++id,op,args,ttl:15000});
+assert.equal(controller.receive(command('status')),false);
+const hello=command('hello');assert.equal(controller.receive(hello),true);assert.equal(controller.session,hello.session);
+const arm=command('arm');controller.receive(arm);assert.equal(events.at(-1)[3].ok,false);
+const button=command('button');controller.receive(button);const before=calls.length;controller.receive(button);assert.equal(calls.length,before);
+assert.equal(controller.receive(command('eval')),false);
+assert.equal(controller.receive({...command('status'),ttl:15001}),false);
+controller.receive(command('hello',{enabled:true},'abcdef1234567890'));
+controller.receive(command('arm',{},'abcdef1234567890'));assert.equal(events.at(-1)[3].ok,true);assert.equal(controller.expired(),false);
+time+=1501;assert.equal(controller.expired(),true);
+controller.stop();assert.equal(controller.receive(command('status',{},'abcdef1234567890')),false);
+console.log('Managed watch controller passed: session isolation, explicit arm authorization, deduplication, TTL, lease and command allowlist');

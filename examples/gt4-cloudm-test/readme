@@ -1,0 +1,148 @@
+# GT4 Cloudm 音频播放：成功记录与复用经验
+
+记录日期：2026-11-17。本文对应已实际出声的 1.0.20，后续修改以该版本为对照基线。
+
+## 一、真机成功的证据
+
+| 项目 | 本轮结果 |
+| --- | --- |
+| 应用 | GT4 Cloudm / com.netease.cloudm |
+| 版本 | 1.0.20，versionCode=1000020 |
+| 应用类型 | liteWearable，apiVersion compatible=6 / target=6 |
+| 安装 | 状态 102，读回版本 1.0.20 |
+| 签名 | 使用本次新申请的 Cloudm Profile |
+| BLE 测试标识 | run=1794894952682 |
+| 模块校验 | audio_decode_m55.bin，1144 字节，精确回读一致 |
+| 音频校验 | music/10020.tmp，120352 字节，精确回读一致 |
+| 列表校验 | 播放列表与 cur_playlist 均写入并读回一致 |
+| 播放 | 显式 play 一次；收到 onplay、onended；errors=0 |
+| 实际听感 | 用户明确反馈“听到声音了” |
+
+连续收到的关键状态如下。t 是设置 src 后的秒数，currentTime 是原生播放状态返回值。
+
+| t | state | currentTime | src |
+| --- | --- | --- | --- |
+| 3 | stop | -1 | 空字符串 |
+| 5 | play | 1 | internal://app/music/10020.tmp |
+| 7 | play | 3 | internal://app/music/10020.tmp |
+| 9 | play | 5 | internal://app/music/10020.tmp |
+| 11 | stop | -1 | 空字符串 |
+
+安装成功、文件校验、播放进度和用户听感分别有记录，不能仅凭 play() 被调用或状态文件写了 playing 判断成功。此次由用户打开 1.0.20；具体输出设备与实际听到的时长未单独询问。
+
+## 二、已验证的文件与播放配置
+
+### 原始模块
+
+使用原喜马拉雅 1144 字节模块，写入：
+
+`internal://app/rawfile/lib/audio_decode_m55.bin`
+
+模块 SHA256：`1988c8dc855b9a93d566e519eab51db4845efcbe243e3ea9f1d6dec3eee4e3fd`。
+
+早期 1180 字节 PATC 模块是入口探针，写标记后返回，不能替代原模块初始化。PATC 标记变化只证明探针入口执行，不证明音频初始化或解码完成。
+
+### 音频与列表
+
+| 文件 | 内容或格式 |
+| --- | --- |
+| internal://app/music/10020.tmp | MPEG-1 MP3，44.1kHz，128kbps，mono；关闭 reservoir，无 ID3/Xing |
+| internal://app/diag_playlist_120 | `10020.tmp,1,0,8,DiagnosticTone,Local;` |
+| internal://app/cur_playlist | `diag_playlist_120` |
+
+保留列表末尾分号，当前列表指针写列表名。缺少列表或 cur_playlist 会使已分析固件的播放流程在加载前提前退出。
+
+普通 MP3 的列表使用 `,1,0,`，第三字段为 0，关闭外部数据变换。原模块导出的回调执行逐字节 XOR，并非普通 MP3 解码器；离线原生执行已验证 512 字节全部改变，MPEG 头 `fffb90c4` 被变为 `a792d1ab`。对普通 MP3 使用启用该变换的 `,1,1,` 会破坏输入。
+
+测试音为 880Hz，MP3 单元重复 32 次，共 120352 字节；本地完整解码无错误，时长 7.522 秒。源峰值 -6.5dBFS、均值 -10.2dB，应用请求 volume=0.5。该音频足以完成本次出声验证；不据此推导其他格式均受支持。
+
+### 初始化与调用顺序
+
+1. 创建 rawfile/lib 和 music 目录；目录已存在时检查其类型。
+2. 模块和音频按最多 2048 字节分块写入，再逐块读回比较全部字节。
+3. 写入播放列表和 cur_playlist，分别读回比较文本。
+4. 获取 `requireNative('system.audio')`，注册事件回调。
+5. 设置 autoplay=false、loop=false、muted=false、volume=0.5，再赋值 src。
+6. 等待 2.5 秒后显式 play 一次，持续采样 getPlayState，不在第一次 stop 时立即判定失败。
+7. 源准备后约 20 秒结束采样并 stop，保存结果。
+
+实际实现见 [audio.js](watch/entry/src/main/js/default/pages/audio/audio.js)，模块与音频数据见 [audio-data.js](watch/entry/src/main/js/default/common/audio-data.js)。使用 500ms 定时器推进分块操作；启动后的写入与校验约需一分钟，以 BLE step 为准。
+
+## 三、排障经验与判断边界
+
+- **空 src 不能单独判定路径错误。** 本轮已经实际出声，但 t=3 秒仍为 stop、src 为空；结束后同样为空。必须结合后续状态和事件。
+- **onerror 的 undefined 不等于没有错误。** 已检查的接口调用 onerror 时不传参数，需要自行附加当时的步骤、源路径和状态。
+- **文件操作完成后才能播放。** BLE 日志应明确区分目录创建、binary-write、binary-read、text-write、text-read、播放阶段，避免把仍在准备文件当作播放失败。
+- **保留足够响度。** 1.0.14 旧音频峰值 -27.6dBFS、均值 -31.3dB，应用 volume=0.3；本轮增大源响度和请求音量后得到听感确认。两项同时变化，不能把此前不出声唯一归因为音量。
+- **控制脚本体积和内存。** 早期出现过编译脚本 Script Error 和 Lite JS 堆内存不足；构建退出码为 0 也不代表脚本有效。使用当前压缩流程和真实编译脚本的 SDK 检查，二进制按小块处理。
+- **保留成功源码再改动。** 先复用已成功的 AirPointer 1.2.6 启动与 BLE 基础代码，音频页保持最小职责。后续尽量一次改变一个条件，并保留同轮安装、版本、run 与日志。
+
+目前证据支持多个阶段存在不同问题：缺失列表、探针替代原模块、外部 XOR 配置、脚本体积和内存、文件准备时序及测试音响度。未取得 1.0.13 真机日志，不能将 1.0.13 与 1.0.14 写成严格的单变量 A/B。当前也没有证据支持“GT4 必须连接耳机”或“不能实际播放”的结论。
+
+## 四、构建、安装与自主收日志
+
+以下命令从工作区根目录执行。只在需要新构建或安装时执行对应步骤。
+
+```bash
+source scripts/env.sh
+bash app/GT4CloudmTest/scripts/build.sh
+bash app/GT4CloudmTest/scripts/install.sh
+```
+
+构建脚本执行签名、Lite JS 检查及 compiled-jerry-runtime.py 离线测试。新 Profile 位于 `.local/signing/profiles/com.netease.cloudm.p7b`，不得误用旧 Profile。安装必须核对状态 102 和读回版本；传包完成、102 之前的阶段或旧实例仍在运行，均不能当作新版已启动。
+
+已成功签名包为 [GT4 Cloudm.bin](build/GT4%20Cloudm.bin)，148962 字节，SHA256：
+
+`c895adb256e7d96b1c9fb9d2513739df54ce9d656bf201a130e915bb709aaed4`
+
+BLE 接收命令：
+
+```bash
+/usr/bin/python3 -u app/GT4CloudmTest/scripts/receive-audio-logs.py --duration 600
+```
+
+接收器从现有配对链路收 CLOUDM-AUDIO 分片，检查报告版本；结果写入 build/audio-ble-results.jsonl 和 build/audio-latest-summary.json。表端完整报告保存为 internal://app/audio-result-1.0.20.json。体积较大的 BLE 摘要只带最后两个状态，因此分析时合并同一 run 的所有报告，不只读最终摘要。
+
+安装器、原 manager、音频接收器和 DFX 下载器应顺序使用。遇到 Existing app transport is busy，先停止当前客户端并等待原 manager.sock 清理完成；不要同时叠加多个连接。此前用未修改的原 manager 恢复现有 CrescentRelay 进程后安装成功，不涉及重置手表、解除配对或重装运动健康。
+
+所有缓存、临时文件、签名材料和日志留在本工作区；手机检查只通过 SSH 标准输出返回，不在手机创建额外文件。
+
+## 五、系统日志下载经验
+
+已复用用户提供的 `tools/Ble-functions/log-download`，工作区内副本位于 artifacts/cloudm-audio-analysis/dfx/。音频 BLE 报告收齐、连接释放后执行：
+
+```bash
+/usr/bin/python3 -u artifacts/cloudm-audio-analysis/dfx/scripts/download-logs.py js_debug.log gpu_error.log mcu_error.log
+```
+
+播放后实测：js_debug.log 返回 0 字节；gpu_error.log 下载 320 字节，mcu_error.log 下载 10 字节。分片索引、长度与本地 SHA256 均记录，连接已 release、detach，未在手机创建文件。
+
+GPU/MCU 日志是二进制编码记录，当前没有完整字典，尚未解出可归因于音频失败的明文错误；其时间基准也未确认。js_debug.log 为空不能证明没有发生过 JS 错误。历史 js_debug 未找到 Cloudm 记录，其他应用的异常不能当成本应用错误。
+
+## 六、远程打开与关闭的经验
+
+原版源码快照是 examples/gt4-airpointer 的 **AirPointer 1.2.6**；完整对照应用在 app/GT4AirPointer126Baseline。该原包名版本在本轮已自动完成 exit → exiting:true → 201 → 202 → 新 boot → hello/status 握手，无需重新安装或人工打开。不能仅凭 terminationConfirmed=false 否定完整事件链。
+
+Cloudm 1.0.19 曾自动启动并返回新 boot，但普通 JS 下行仍返回 206；本轮 1.0.20 是用户打开。202 不是页面已加载的充分证据，207 也不是退出完成的充分证据。需要版本、run/boot、应用层 ACK 与重新握手联合确认。2A/01 的 op=2 是取消安装，不能用来关闭应用。
+
+对 5.0.0.88 镜像的静态分析和离线函数执行表明：com.netease.cloudm 会前缀命中特殊音频包分类，其原生 P2P 对端校验不同于普通 JS 应用。这支持 Cloudm 控制失败的解释，但没有在线读出本机具体注册项，不能写成已直接跟踪确认的冲突。音频已经出声与远程关闭仍待解决应分别记录，不能为了控制随意更换包名而未经验证就假定音频仍可用。
+
+## 七、证据与源码索引
+
+以下路径均相对于工作区根目录 artifacts/cloudm-audio-analysis/，原始证据保留在工作区内：
+
+| 文件 | 用途 |
+| --- | --- |
+| verified-result-1.0.20.json | 安装、BLE 状态及用户听感的汇总 |
+| install-result-1.0.20.json | 安装状态 102 和版本读回 |
+| live-audio-1.0.20.json | 同一 run 的全部真实 BLE 报告 |
+| audible-confirmation-1.0.20.json | 用户“听到声音了”的记录 |
+| verified-build-manifest-1.0.20.json | 成功构建、源码和 Profile 的哈希 |
+| source-1.0.20-audible-confirmed/ | 成功版本源码快照 |
+| vendor-transform-proof.json | 原模块 XOR 回调离线执行证据 |
+| tone-properties-1.0.20.json | 音频编码、字节数和离线时长 |
+| dfx/after-audible-1.0.20-analysis.json | 播放后系统日志下载与解析 |
+| autonomous-lifecycle-confirmed-20261117.json | 原 AirPointer 1.2.6 自主开关证据 |
+| P2P-PACKAGE-COLLISION.md | Cloudm 特殊音频 P2P 路径分析及边界 |
+
+汇总结论见 [AUDIO-CURRENT-JUDGMENT.md](../../artifacts/cloudm-audio-analysis/AUDIO-CURRENT-JUDGMENT.md)。后续验证应保留这份成功基线，将新增设备结果与离线分析分别记录。

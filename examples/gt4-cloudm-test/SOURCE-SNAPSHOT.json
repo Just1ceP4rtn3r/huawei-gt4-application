@@ -1,0 +1,448 @@
+{
+  "source": "artifacts/cloudm-audio-analysis/source-1.0.20-audible-confirmed",
+  "version": "1.0.20",
+  "deviceValidation": "已确认实际出声；watch关键文件与成功构建清单哈希一致。",
+  "status": "app与example均已恢复成功版1.0.20；关键源码哈希一致；两处构建及编译脚本SDK离线测试通过；未新增真机测试。",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "503aaf9cca3d7d3c0e8dae308283e6416412a478b733cacd6ea709e7d60c9d28"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4fb9990e9d101dfb01d6700258b18aca2fdab1d83c83342fe9fde4a1c7be8e49"
+    },
+    {
+      "path": "desktop/MouseSink.swift",
+      "sha256": "50fbcda738752dd83e47725f88cfbc7a0cad57b6c9579cc08a3524af1f058896"
+    },
+    {
+      "path": "desktop/MouseTestTarget.swift",
+      "sha256": "85eddb6f30b310ebc25728e30ea1f0bf48135b5d4c3e0ce9d7405b03936ab2ad"
+    },
+    {
+      "path": "device.env.example",
+      "sha256": "0375e1a6221b2ec0dffffec930315c9c32977d907606033d1d983d6f2de44c31"
+    },
+    {
+      "path": "docs/FILE-TEST-RESULT.md",
+      "sha256": "a7220f6dcb97f79dde3b77ee46f9d8d906f1d8fc3a46f5dba7243b97e1d67eae"
+    },
+    {
+      "path": "docs/INSTALLATION-REPAIR.md",
+      "sha256": "e67573cb735297bd8db4a759f25acc8223b35def13fa773fd93f51a843c356b0"
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "sha256": "bebfbabc8416b57f2d97a96fd76e38197de9323a06ca7d9ad9143642ca1974c1"
+    },
+    {
+      "path": "docs/SOURCES.md",
+      "sha256": "d8c864b7b93df52317f265d07693e1d1bdc73abc26a6713163a5613c62762852"
+    },
+    {
+      "path": "package.json",
+      "sha256": "b435a7128c1f58b4740efbb4fd8cbed6af3286270351274605d532de3f88589f"
+    },
+    {
+      "path": "readme",
+      "sha256": "28b440245d40afd40322956b40cb9d775839cf855e23affcb5aceac7dd5ff4cf"
+    },
+    {
+      "path": "relay/ap-renewal.js",
+      "sha256": "3f17ce655df83d8e0280037f7ebf51bc574e211d5834a09ed6aa89d0a13a9811"
+    },
+    {
+      "path": "relay/iphone-agent.js",
+      "sha256": "50a991182dfd1e20c40f0648e19d30bf5b8deaf3f4a6d1eba831c339171ad94d"
+    },
+    {
+      "path": "relay/mac-crypto.mjs",
+      "sha256": "64eb3bf715836e42d949d88c12f4ca912f333951e4579ca5f4c086cc191b7715"
+    },
+    {
+      "path": "relay/mac-tcp.mjs",
+      "sha256": "99e6cac9dce63be8e7548a3e90c2af10f999b99978a450485a389a76d1d9c8b3"
+    },
+    {
+      "path": "relay/mac_worker.py",
+      "sha256": "1e51c7f1cdee2e91498c412afb1c2e9e3dd61095d800c5b97b68cbf2bd3266b2"
+    },
+    {
+      "path": "relay/manager.py",
+      "sha256": "dcc72bd4292d46309d21c9cc593b7fa71acb80ec027b181718795b425085039e"
+    },
+    {
+      "path": "relay/phone-bootstrap.js",
+      "sha256": "17e7315587da56724a59a6cb3fa65cd487245f8a7ab188f0b42dca9ebb326fd7"
+    },
+    {
+      "path": "relay/pointer-beacon.js",
+      "sha256": "313f46b373f24afdc3d8d561c63918562e76661e33ebe93ec5e164551e797660"
+    },
+    {
+      "path": "relay/protocol.js",
+      "sha256": "6de7f630a811227407e9ada05b75f11e6a71652ffde788267dbfc3d934dca109"
+    },
+    {
+      "path": "relay/relay.py",
+      "sha256": "f31ee226e55d81285271aada23b7731f954f9a271dab88602efafcfe12a4f5e0"
+    },
+    {
+      "path": "relay/tcp-channel.js",
+      "sha256": "52920496ac080c94753d676cd84f827af5c64a32fdf4cde50553f82aa332e8e1"
+    },
+    {
+      "path": "relay/watch_logs.py",
+      "sha256": "22014f6d774719d0614678bae007e011008787550a4a5940877a3fa76e2d2e6e"
+    },
+    {
+      "path": "relay/wifi-ap.js",
+      "sha256": "1e990d33e636117581062e13e5d5fda7e4ec0e54d4a2e2d0654d5fcb51596441"
+    },
+    {
+      "path": "scripts/bootstrap-phone.py",
+      "sha256": "632f65774c96c3207ded5b50dc198095fc7441b8c81355e0ba60a378dbf7358d"
+    },
+    {
+      "path": "scripts/build.sh",
+      "sha256": "2c56697fcb0ed62193103aa750da157143d70d3bc581ec5dff54d2b0438e5a87"
+    },
+    {
+      "path": "scripts/check-lite-js.py",
+      "sha256": "f5ac04ffe3b9bb6dedcf10f097b2e3467707ac4e9548d3236095b6271436bdc5"
+    },
+    {
+      "path": "scripts/compact-watch-js.cjs",
+      "sha256": "a922b3f4c02835e42113f077cd639fbbcacc66c388c78a286d0364a7214b106f"
+    },
+    {
+      "path": "scripts/install-channel.py",
+      "sha256": "bc7948b4b7e50fd1cd74d382ab603ea665d6014a79e2dc5c6bdca6d69ba10703"
+    },
+    {
+      "path": "scripts/install.sh",
+      "sha256": "534739a774256b7a03bb54618cbd8a107e3ce7a451d4e0305077d2a51f488a69"
+    },
+    {
+      "path": "scripts/manage.sh",
+      "sha256": "5777c10141ac0d0668ab5d309e9314807f03ab5170446c19d3833cde5f1edbf2"
+    },
+    {
+      "path": "scripts/receive-audio-logs.py",
+      "sha256": "c8aa90b9ab4dafd0cdb4d619b9342823645869885e488535dde7c8e5c4d1acf7"
+    },
+    {
+      "path": "scripts/receive-file-logs.py",
+      "sha256": "dcf6773fd2d357741a241fb59a418f3514164c4c041a4a306fe4ff22187585f4"
+    },
+    {
+      "path": "scripts/run-mac-tcp.py",
+      "sha256": "c00b7443d062b814de60e30d6d44f179b0ddf03f8a7aa8d0a093b3ede8b43052"
+    },
+    {
+      "path": "scripts/test-ap.py",
+      "sha256": "8f4c368774869a0e3566e293494adfe192af076aee223bc8654ee377c681ace8"
+    },
+    {
+      "path": "scripts/test-exit.py",
+      "sha256": "be7838e5606bc6655aa0466e47f978cd79c996214678037fb9142d5446517726"
+    },
+    {
+      "path": "scripts/test-mac.py",
+      "sha256": "258f3ecdc8652b332b03e453bb7d2f654f5d941d37718db6142db0917ed8e889"
+    },
+    {
+      "path": "scripts/test-mac.sh",
+      "sha256": "bfe8e03331aac5859f8a66732ca5d3da668f9415e2e8f7dbc31c912034c86bb7"
+    },
+    {
+      "path": "scripts/validate-signing.py",
+      "sha256": "bba7b1632e417187d05662cfce3c241bad7c5c64487157263ceeb49acef6fb6e"
+    },
+    {
+      "path": "scripts/verify-bin.py",
+      "sha256": "857dba2953a3199b48ce14388fc9b47ceb5f9f8dc22bc589471c1c86c98c5d7a"
+    },
+    {
+      "path": "scripts/verify-lifecycle.py",
+      "sha256": "a0458d1c927a02e2298ae86b14887d073db43e9765156e84eb98bdb73fc858bf"
+    },
+    {
+      "path": "tests/ap_renewal.test.mjs",
+      "sha256": "eeeacd5502dd9ae9707087e70bbc09b206ae1fa58506216aa9242352bce80bf8"
+    },
+    {
+      "path": "tests/audio-diag.test.cjs",
+      "sha256": "d9ba1907fbc7c67c6f8f6d2d2345f0e4047e2e3677328e9eac77b9e7be827f38"
+    },
+    {
+      "path": "tests/compiled-jerry-runtime.py",
+      "sha256": "aa3a1797ef05b67c9a7d8b6752946ddc5c3a0da02ce2f74a62cf261b87f4447c"
+    },
+    {
+      "path": "tests/compiled-runtime.test.mjs",
+      "sha256": "481d55f693d49f09e53b7398826319e017ff28c32a5c75932fcf567669e36b39"
+    },
+    {
+      "path": "tests/jerry_parse_test.py",
+      "sha256": "898e4bffd67f6a4ee8e366fe9fe582b319f319cfa4a9045dddfbdbe606af0953"
+    },
+    {
+      "path": "tests/jerry_runtime_test.py",
+      "sha256": "b403877c193755b1e1ee57bbbef774911e579c3b2e82c79cab65f036837146f8"
+    },
+    {
+      "path": "tests/lifecycle.test.mjs",
+      "sha256": "4720a27251b01cabbf9e0ee0e4472f2c6fa8457fa8e4ac73b378f86280f9ea78"
+    },
+    {
+      "path": "tests/load-source.mjs",
+      "sha256": "53e058b1c8f3ba300ee399d309d1a41b6ededf6d467c68fafd8ec93e6f31741f"
+    },
+    {
+      "path": "tests/mac_crypto.test.mjs",
+      "sha256": "91a70c5c3f9337f8b02ff91e77a8001fd1ba728690b66f985a89e34fac67d0d6"
+    },
+    {
+      "path": "tests/mac_rpc.test.mjs",
+      "sha256": "c9ec9616d18356cc20bf7aff6c783379a6b0cdf6a291ff457d5514ca321a1246"
+    },
+    {
+      "path": "tests/managed_controller.test.mjs",
+      "sha256": "67cae80e4c3222e8b3bc37c9efe2e75482b7bad53edfe0805cca9799cf1460a1"
+    },
+    {
+      "path": "tests/manager_test.py",
+      "sha256": "494d4342b734272f27a4451ccc30ce9f0ad456ba15df6b49ac584bd745777f67"
+    },
+    {
+      "path": "tests/message_queue.test.mjs",
+      "sha256": "1cc9a4062b6163f90330932c3f9f774fb4679d49a3811eca203551d34b0e1e99"
+    },
+    {
+      "path": "tests/motion.test.mjs",
+      "sha256": "be418fff601d3e7f4838b959adfa9a61ebe24541a1ade9f8679268ca8142da40"
+    },
+    {
+      "path": "tests/network_probe.test.mjs",
+      "sha256": "cebf9ecedadc958c3156ea9b27f89656403df936820e1bae1ff8525d2a704db4"
+    },
+    {
+      "path": "tests/network_runtime_test.py",
+      "sha256": "409c4e88cd0784fc4e849cca6171f90577d9493160f8a32ab5a2f2418aa22dab"
+    },
+    {
+      "path": "tests/pipeline_test.py",
+      "sha256": "2c60a7d422190afad4c8a08e6188e2ed1f5f888443bf48d9ab854a433fb30081"
+    },
+    {
+      "path": "tests/pointer_beacon.test.mjs",
+      "sha256": "b86a9edac2465738d0db0548afea44bdcffbce5fa58616c10784287554ad819d"
+    },
+    {
+      "path": "tests/pointer_roundtrip.test.mjs",
+      "sha256": "e2f020c156729c6262b71938fd9853c27473c63416e3fb66a0327e08f61d5567"
+    },
+    {
+      "path": "tests/protocol.test.mjs",
+      "sha256": "111cfa81e1376402e0000a30734b9e0982c3d8888ad108e7e1cb6842ecea1334"
+    },
+    {
+      "path": "tests/rawfile.test.mjs",
+      "sha256": "88d8ec516c2b39a4338a0d385944268f58d366b64df3dd2465dcb920da3d9877"
+    },
+    {
+      "path": "tests/tcp_channel.test.mjs",
+      "sha256": "cf0e42e809c27f23af79160d806d01b94370d3dece4c5e937d6e7e20290a0f34"
+    },
+    {
+      "path": "tests/transport.test.mjs",
+      "sha256": "8d2ec1d2c62c6fb0c74c0d497c6fd51996169e94611b5755209b35258b139dc7"
+    },
+    {
+      "path": "tests/watch_logs_test.py",
+      "sha256": "afa16b9cbe9ffcf51d14e889591da20039e58c633c354f445b19329d73a921ce"
+    },
+    {
+      "path": "tests/wifi_ap.test.mjs",
+      "sha256": "5d3137a7c4210dd48239907f3d3056c5b0c4fe937439258c66a94582ca81ae6c"
+    },
+    {
+      "path": "watch/entry/src/main/config.json",
+      "sha256": "60b7d623e8962249418969ec5855acda8660f3dce70fb13fe6979096d250bf9a"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/app.js",
+      "sha256": "41f53099db581f1187d830171f597e68b9c109cfa82577a48ea07f1a4666cc9a"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/audio-ble.js",
+      "sha256": "852fd2fe618f733fa11856b440ef7f9fd57de00d37038c2a22249637474a5170"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/audio-data.js",
+      "sha256": "70b1b42013a74e30afafceb561bc5342cadc1f790e04073d3caab2446aeaf760"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/audio-lib.js",
+      "sha256": "ab63cc8296bfef510c4ae3f9f68677f77e4893ebdf4614a734ce3dd9dfb7ba88"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/bridge.js",
+      "sha256": "e950b4ce624e6ca23e3453f2c1cdadfc9732f5ff1e22458759e4cbcf2c7fbc9a"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/cloudm-aac.js",
+      "sha256": "a0cbc5cc9b161a29782a8a67cae43ff3147cb7242e7e093c22a6cc9091db64e3"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/cloudm-lib.js",
+      "sha256": "f91304d8100f2619d8a8a2272e41c01aee1fb6355dc888b76446e528e6a995b5"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/cloudm-mp3.js",
+      "sha256": "2e1d4a022b18ad994c032c53164602e40391828011114d65eb5ca4a04c0a44e4"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/cloudm-tone.js",
+      "sha256": "0e27e220b1c01fa4cf6595b2d672a0dd5c7a5c5f04fcf4747edecd2c22a7efe4"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/cloudm-wav.js",
+      "sha256": "e199ae2abee4ac9463ecde9e69778b6d63473dea2b93ba4099c7b9069e2b41b2"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/config.js",
+      "sha256": "f14e4128f7044b78d64866505551f74fb70c17e9facb6908a9e54a4b31bf8826"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/diagnostics.js",
+      "sha256": "c219eca4fb656bdfa30120ef139f0818918e0a6b71f83bf3dd18c16a4d48d748"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/managed-controller.js",
+      "sha256": "c36782d4e2032bed0398ffe5b9059cc63a9c90b5a8a1a689cb869ad9a87a8713"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/managed-link.js",
+      "sha256": "2631a5553701918503967e4a5e87e328cc182d36bbd2c55fc78c0ec0e5162fee"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/motion.js",
+      "sha256": "c14b937069a3ecb98e5e44b66931defba3683d707050e4e347d3410b97dfd379"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/native-wearengine.js",
+      "sha256": "d044d121695e9f5e9664c1ea2673f3d1b0d287badcb69849f407fa798b3d7630"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/network-bridge.js",
+      "sha256": "a95cc23669e783e12d04c217dc9d22f4c9bee3d5114249988c4ce3fea1be9247"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/network-probe.js",
+      "sha256": "24364950f63c457d2db27aca6fd1d8ec256bd5297104abfee6e296352b2c92fa"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/pointer-beacon.js",
+      "sha256": "922fc300292fe4684cfcb17954c8261bad2fe3c1b9760311bcc92857f93610df"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/rawfile-read-probe.js",
+      "sha256": "29206869183b232529b85d7d9769433f3729ae40f18384874732bb18a18cd2e8"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/rawfile-target-test.js",
+      "sha256": "040c2a93451d01de3e88e5ba97fb4ecfa480dd8e066b1cbfca91b9f4a09719b2"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/rawfile-test.js",
+      "sha256": "41df73752584cd36e09a1b990b5ad3f27f8aaa4f6e92f427839e7c32feb1b2d9"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/transport.js",
+      "sha256": "6e3393e38856a7b17013e15a8992cb7aa771dd051e64afeac76d24be8aadbb1d"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/common/vendor/wearengine.js",
+      "sha256": "3437e96f41608bedc9301a59561f9f4907aa991ac3ae878f11590196a015dad7"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/audio/audio.css",
+      "sha256": "1b0addd29a0da10d18fc7978438f7c211dea072ba3aa86fdffab772fb287bcd7"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/audio/audio.hml",
+      "sha256": "1c99ffed6e2f8309315c6fb23a9e7a46976ee2c04ecbcdd7e5bb7cd1e94467a0"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/audio/audio.js",
+      "sha256": "9773cc88453237406c4e9b854f92a6f52f9891d6b0024590bd911f0b964f1dad"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/control/control.css",
+      "sha256": "24cd0d0201f3d60322c89cc17d62d96981a56de3ea5e3187f24020c19c3ce31e"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/control/control.hml",
+      "sha256": "66c9f3d34db48139000292910858ea027e61dc52c3558c36487f9edf7a10cf62"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/control/control.js",
+      "sha256": "f79f6ff92b722d4bb9468eece2bd6f646c43f143b75131b7fcda74601547ef95"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/index/index.css",
+      "sha256": "40709518c389586c8adaf5d690b875afca44f3064ddc2bf05fedf1c3e1bb4993"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/index/index.hml",
+      "sha256": "4600aac03633b09b924be9cd950ee46f4034d1e09f1aca15b47041dc9571f259"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/index/index.js",
+      "sha256": "121decf4254af2ff22940cdd5b8e381249ded90d2643add67d9d4a019352034f"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/lifecycle/lifecycle.css",
+      "sha256": "1b0addd29a0da10d18fc7978438f7c211dea072ba3aa86fdffab772fb287bcd7"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/lifecycle/lifecycle.hml",
+      "sha256": "38a03f186199c185d40adfcf25655a01888626d038d26ed55fb0520541297f1a"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/lifecycle/lifecycle.js",
+      "sha256": "6df8e45d6e29e87f61d985c1765940c6122c1646d65248b86f7f7b6510f929c5"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/network/network.css",
+      "sha256": "1b5085c78048eb17e6a686ede974229a11eab9f49e316b327cf6274f51b9522e"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/network/network.hml",
+      "sha256": "a2a6c9b5aa830c409917645afadf7973044dc6fe36cf663d2236af3e2ef0a785"
+    },
+    {
+      "path": "watch/entry/src/main/js/default/pages/network/network.js",
+      "sha256": "3b4269a325fdbdc5d5fdbc86cbfedc94ca39dc48dc219e3227a4a0e8370dcc40"
+    },
+    {
+      "path": "watch/entry/src/main/resources/base/element/string.json",
+      "sha256": "f7929c91629a77b0b61ceb59043cdefa72b8eb924d449fd74c1c1b9e29ee5f21"
+    },
+    {
+      "path": "watch/entry/src/main/resources/base/media/icon.png",
+      "sha256": "90439eda849ba9045f3c34afd7157156b8974aeed8225459acebac3de7f24947"
+    },
+    {
+      "path": "watch/entry/src/main/resources/base/media/icon_small.png",
+      "sha256": "ea24141569c0c4e4155ae196289e7c03507e2faa10230eaceecf73c4a3ca3267"
+    },
+    {
+      "path": "watch/package.json",
+      "sha256": "7d38de102f9d211b8a221ab5943610473c4b23aeee36e9a9cf0e22848e04b9d4"
+    }
+  ]
+}
